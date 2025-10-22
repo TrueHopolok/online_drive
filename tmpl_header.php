@@ -19,7 +19,7 @@
                         <a class="nav-link" href="index.php">Home</a>
                     </li>
                     <?php
-                    if (empty($_SESSION["auth"]))
+                    if (empty($_SESSION['username']))
                         echo '
                     <li class="nav-item">
                     <a class="nav-link" href="login.php">Login</a>

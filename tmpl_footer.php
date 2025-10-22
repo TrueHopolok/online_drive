@@ -2,7 +2,7 @@
 </main>
 <hr>
 <footer>
-    <p>Created as a training project for php web development.</p>
+    <p>Web page was created as a training project for php web development.</p>
 </footer>
 </div>
 
