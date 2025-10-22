@@ -2,17 +2,13 @@
 
 require_once "db.php";
 
-// Finds user by provided username, returns its uid and hashed password
-// If was not found, returns false
-function user_find(string $username): array|bool {
+function file_upload(string $username, string $filepath): void {
     $conn = database_connect();
     try {
         $conn->beginTransaction();
-        $stmt = $conn->prepare("SELECT password FROM user WHERE username=?;");
-        $stmt->execute([$username]);
+        $stmt = $conn->prepare("INSERT INTO file (username, filepath) VALUES (?, ?);");
+        $stmt->execute([$username, $filepath]);
         $conn->commit();
-
-        return $stmt->fetch();
     } catch (PDOException $e) {
         try {
             $conn->rollBack();
@@ -22,14 +18,12 @@ function user_find(string $username): array|bool {
     }
 }
 
-// Checks whether or not username is taken and returns result
-// True means taken
-function user_check(string $username): bool {
+function file_check(string $username, string $filepath): bool {
     $conn = database_connect();
     try {
         $conn->beginTransaction();
-        $stmt = $conn->prepare("SELECT COUNT(*) AS existance FROM user WHERE username=?;");
-        $stmt->execute([$username]);
+        $stmt = $conn->prepare("SELECT COUNT(*) AS existance FROM file WHERE username=? AND filepath = ?;");
+        $stmt->execute([$username, $filepath]);
         $conn->commit();
 
         $row = $stmt->fetch();
@@ -44,14 +38,14 @@ function user_check(string $username): bool {
     }
 }
 
-// Inserts a user with provided username and hashed password
-function user_insert(string $username, string $password): void {
+function file_getlist(string $username): array {
     $conn = database_connect();
     try {
         $conn->beginTransaction();
-        $stmt = $conn->prepare("INSERT INTO user (username, password) VALUES (?, ?);");
-        $stmt->execute([$username, $password]);
+        $stmt = $conn->prepare("SELECT filepath FROM file WHERE username = ?;");
+        $stmt->execute([$username]);
         $conn->commit();
+        return $stmt->fetchAll();
     } catch (PDOException $e) {
         try {
             $conn->rollBack();
