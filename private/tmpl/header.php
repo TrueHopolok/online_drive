@@ -13,21 +13,21 @@
     <div class="container"> <!-- margin for the whole doc -->
         <header>
             <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="index.php">OD - Online Drive</a>
+                <a class="navbar-brand" href="/">OD - Online Drive</a>
                 <ul class="navbar-nav mr-auto">
                     <?php
-                    if (empty($_SESSION['username']))
+                    if (empty($_SESSION['auth']))
                         echo '
                     <li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
+                    <a class="nav-link" href="/login.php">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="register.php">Register</a>
+                        <a class="nav-link" href="/register.php">Register</a>
                     </li>';
                     else
                         echo '
                     <li class="nav-item">
-                    <a class="nav-link" href="api_logout.php">Logout</a>
+                    <a class="nav-link" href="/api/logout.php">Logout</a>
                     </li>';
                     ?>
                 </ul>
