@@ -1,7 +1,7 @@
 <?php
 session_start();
 $title = "Home";
-require_once "tmpl_header.php";
+require_once "../private/tmpl_header.php";
 ?>
 
 <?php
@@ -10,7 +10,7 @@ if (empty($_SESSION['username'])) {
     <h2>Welcome unknown!</h2>
     <p>Please login into account to access your files</p>
     ';
-    require_once "tmpl_footer.php";
+    require_once "../private/tmpl_footer.php";
     exit;
 }
 ?>
@@ -19,5 +19,5 @@ if (empty($_SESSION['username'])) {
 
 
 <?php
-require_once "tmpl_footer.php";
+require_once "../private/tmpl_footer.php";
 ?>

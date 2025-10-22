@@ -8,7 +8,7 @@ if (!empty($_SESSION['username'])) {
 }
 
 $title = "Login";
-require_once "tmpl_header.php";
+require_once "../private/tmpl_header.php";
 ?>
 
 <form class=<?php echo empty($_SESSION['login_attempted']) ? "needs-validation" : "was-validated"; ?> method="post"
@@ -18,7 +18,7 @@ require_once "tmpl_header.php";
         <div class="input-group">
             <input name="username" type="text" class="form-control" required minlength="3" maxlength="20">
             <div class="invalid-feedback">
-                Please input valid username.
+                <?= $_SESSION['login_username'] ?>
             </div>
         </div>
         <small class="form-text text-muted"></small>
@@ -29,15 +29,18 @@ require_once "tmpl_header.php";
         <div class="input-group">
             <input name="password" type="password" class="form-control" required minlength="8" maxlength="20">
             <div class="invalid-feedback">
-                Please input valid password.
+                <?= $_SESSION['login_password'] ?>
             </div>
         </div>
         <small class="form-text text-muted"></small>
     </div>
     <br>
+    <div class="invalid-feedback">
+        <?= $_SESSION['login_error'] ?>
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 <?php
-require_once "tmpl_footer.php";
+require_once "../private/tmpl_footer.php";
 ?>
