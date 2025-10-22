@@ -15,7 +15,8 @@ if (empty($_SESSION['auth'])) {
 }
 ?>
 
-<h2>Welcome back <? $_SESSION['username'] ?>!</h2>
+<h2>Welcome back <b><?= $_SESSION['username'] ?></b>!</h2>
+<p>Congrats on getting here.</p>
 
 
 <?php

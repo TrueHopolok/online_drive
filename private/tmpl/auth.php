@@ -23,16 +23,14 @@
             echo "<div class=\"invalid-feedback\">
                 $_SESSION[auth_password]
             </div>";
+            elseif (!empty($_SESSION['auth_error']))
+            echo "<div class=\"invalid-feedback\">
+                $_SESSION[auth_error] 
+            </div>";
             ?>
         </div>
         <small class="form-text text-muted"></small>
     </div>
     <br>
-    <?php
-    if (!empty($_SESSION['auth_error']))
-    echo "<div class=\"invalid-feedback\">
-        $_SESSION[auth_error]
-    </div>";
-    ?>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
