@@ -16,6 +16,8 @@ if (empty($_FILES['file'])) {
     exit;
 }
 
+// TODO - total size validation
+
 if ($_FILES['file']['size'] > FILE_MAXSIZE) {
     http_response_code(400);
     header("Location: /");
