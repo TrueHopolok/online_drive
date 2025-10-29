@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 if (!empty($_SESSION['auth'])) {
@@ -15,5 +16,3 @@ require_once "../private/tmpl/auth.php";
 $_SESSION['auth_attempted'] = false;
 
 require_once "../private/tmpl/footer.php";
-
-?>
